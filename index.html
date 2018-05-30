@@ -106,7 +106,7 @@
 			    convertToNewNumber: function () {
 			    	let first_numbers = this.old_number;
 			    	for (const [old_num, new_num] of Object.entries(number_mapping)) {
-			    		if( first_numbers.indexOf(old_num) > -1) {
+			    		if( first_numbers.indexOf(old_num) === 0) {
 			    			first_numbers = first_numbers.replace(old_num, new_num);
 			    			break;
 			    		}
