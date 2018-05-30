@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Công cụ chuyển đổi số điện thoại 11 số thành 10 số</title>
+		<meta name="description" content="Công cụ chuyển đổi số điện thoại 11 số thành 10 số cho các nhà mạng Viettel, Vinaphone, MobiFone, Vietnamobile và Gtel" />
+		
+		<meta property="og:title" content="Công cụ chuyển đổi số điện thoại 11 số thành 10 số" />
+		<meta property="og:description" content="Công cụ chuyển đổi số điện thoại 11 số thành 10 số cho các nhà mạng Viettel, Vinaphone, MobiFone, Vietnamobile và Gtel" />
+		<meta property="og:image" content="https://i.imgur.com/oUSlV1u.jpg" />
+		<meta property="og:locale" content="vi_VN" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<style type="text/css">
+			#main_section {
+			    padding-top: 50px
+			}
+			#main_section .form-wrap {
+			    width: 70%;
+			    margin: 0 auto;
+			}
+			h2.text-success {
+				margin-bottom: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<section id="main_section">
+			<h2 class="text-center text-success">Công cụ chuyển đổi số điện thoại 11 số thành 10 số</h2>
+			<div class="container" id="app">
+				
+				<div class="row">
+					<div class="col-xs-12">
+
+						<div class="form-wrap">
+
+							<form class="form-horizontal">
+							  <div class="form-group form-group-lg">
+							    <label for="old_num" class="col-sm-4 control-label">Số ĐT cũ</label>
+							    <div class="col-sm-8">
+							      <input type="text" class="form-control" id="old_num" placeholder="01234567890" v-model="old_number">
+							    </div>
+							  </div>
+							  <div class="form-group form-group-lg">
+							    <label for="new_num" class="col-sm-4 control-label">Số ĐT mới</label>
+							    <div class="col-sm-8">
+							      <input type="text" class="form-control" id="new_num" v-model="convertToNewNumber">
+							    </div>
+							  </div>
+							  
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript">
+			const number_mapping = {
+				// Vinaphone
+				'0123': '083',
+				'0124': '084',
+				'0125': '085',
+				'0127': '081',
+				'0129': '082',
+				// Viettel
+				'0162': '032',
+				'0163': '033',
+				'0164': '034',
+				'0165': '035',
+				'0166': '036',
+				'0167': '037',
+				'0168': '038',
+				'0169': '039',
+				// MobiFone
+				'0120': '070',
+				'0121': '079',
+				'0122': '077',
+				'0126': '076',
+				'0128': '078',
+				// Vietnamobile
+				'0188': '056',
+				'0186': '058',
+				// Gtel
+				'0199': '059'
+			}
+			var vm = new Vue({
+			  el: '#app',
+			  data: {
+			    old_number: ''
+			  },
+			  computed: {
+			    convertToNewNumber: function () {
+			    	let first_numbers = this.old_number;
+			    	for (const [old_num, new_num] of Object.entries(number_mapping)) {
+			    		first_numbers = first_numbers.replace(old_num, new_num);
+			    	}
+			      return first_numbers;
+			    }
+			  }
+			})
+		</script>
+	</body>
+	<!--
+	¯\_(ツ)_/¯
+	-->
+</html>
